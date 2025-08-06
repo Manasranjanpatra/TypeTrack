@@ -43,7 +43,7 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ stats, onRestart
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8 fade-in">
+    <div className="max-w-4xl mx-auto p-6 space-y-8 animate-in fade-in duration-500">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="text-6xl mb-4">{performance.emoji}</div>
@@ -57,7 +57,7 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ stats, onRestart
 
       {/* Main Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="stats-card text-center scale-in">
+        <Card className="stats-card text-center animate-in zoom-in duration-300">
           <div className="flex items-center justify-center mb-4">
             <Zap className="w-8 h-8 text-yellow-500 mr-2" />
             <span className="text-lg font-medium text-muted-foreground">Speed</span>
@@ -66,7 +66,7 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ stats, onRestart
           <div className="text-sm text-muted-foreground">Words Per Minute</div>
         </Card>
         
-        <Card className="stats-card text-center scale-in" style={{ animationDelay: '100ms' }}>
+        <Card className="stats-card text-center animate-in zoom-in duration-300" style={{ animationDelay: '100ms' }}>
           <div className="flex items-center justify-center mb-4">
             <Target className="w-8 h-8 text-green-500 mr-2" />
             <span className="text-lg font-medium text-muted-foreground">Accuracy</span>
@@ -75,7 +75,7 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ stats, onRestart
           <div className="text-sm text-muted-foreground">Correct Characters</div>
         </Card>
         
-        <Card className="stats-card text-center scale-in" style={{ animationDelay: '200ms' }}>
+        <Card className="stats-card text-center animate-in zoom-in duration-300" style={{ animationDelay: '200ms' }}>
           <div className="flex items-center justify-center mb-4">
             <Trophy className="w-8 h-8 text-purple-500 mr-2" />
             <span className="text-lg font-medium text-muted-foreground">Keystrokes</span>

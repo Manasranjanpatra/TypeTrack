@@ -171,13 +171,4 @@
     @apply bg-white rounded-2xl p-6 shadow-sm border border-border/50 backdrop-blur-sm;
     box-shadow: var(--shadow-card);
   }
-
-  /* Smooth animations */
-  .fade-in {
-    @apply animate-in fade-in duration-500;
-  }
-
-  .scale-in {
-    @apply animate-in zoom-in duration-300;
-  }
 }
