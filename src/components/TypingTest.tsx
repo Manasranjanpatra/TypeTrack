@@ -57,17 +57,29 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onComplete }) => {
   }, [userInput, text, timeLeft]);
 
   useEffect(() => {
-    if (isActive && timeLeft > 0) {
+    console.log('Timer effect triggered:', { isActive, timeLeft, isCompleted });
+    
+    if (isActive && timeLeft > 0 && !isCompleted) {
+      console.log('Starting timer interval');
       const timer = setInterval(() => {
-        setTimeLeft(time => time - 1);
+        console.log('Timer tick');
+        setTimeLeft(prevTime => {
+          const newTime = prevTime - 1;
+          console.log('Time updated:', newTime);
+          return newTime;
+        });
       }, 1000);
-      return () => clearInterval(timer);
+      return () => {
+        console.log('Clearing timer');
+        clearInterval(timer);
+      };
     } else if (timeLeft === 0 && !isCompleted) {
+      console.log('Timer completed, finishing test');
       setIsCompleted(true);
       setIsActive(false);
       onComplete(calculateStats());
     }
-  }, [isActive, timeLeft, isCompleted, calculateStats, onComplete]);
+  }, [isActive, timeLeft, isCompleted, onComplete]);
 
   useEffect(() => {
     const newStats = calculateStats();
@@ -76,8 +88,10 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onComplete }) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
+    console.log('Input changed:', { value: value.length, isActive, timeLeft });
     
     if (!isActive && value.length === 1) {
+      console.log('Activating timer - first character typed');
       setIsActive(true);
     }
     
