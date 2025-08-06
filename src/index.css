@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Typing Speed Checker Design System - Modern, Soft, Delightful */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Modern gradient backgrounds */
+    --background: 220 20% 97%;
+    --foreground: 220 25% 20%;
 
+    /* Soft card styling */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 25% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 25% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Beautiful primary gradient (blue to purple) */
+    --primary: 235 85% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 240 85% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Soft secondary colors */
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 25% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted elements */
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 15% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors (green for success) */
+    --accent: 145 70% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Error states */
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 220 15% 88%;
+    --input: 220 15% 94%;
+    --ring: 235 85% 65%;
 
-    --radius: 0.5rem;
+    /* Typing-specific colors */
+    --correct: 145 70% 60%;
+    --incorrect: 0 75% 65%;
+    --current: 235 85% 65%;
+    --untyped: 220 15% 65%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(235 85% 65%), hsl(250 80% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(145 70% 60%), hsl(160 65% 65%));
+    --gradient-bg: linear-gradient(135deg, hsl(220 20% 97%), hsl(230 25% 95%));
+
+    /* Shadows and glows */
+    --shadow-soft: 0 4px 20px -4px hsl(220 25% 20% / 0.1);
+    --shadow-glow: 0 0 30px hsl(235 85% 65% / 0.2);
+    --shadow-card: 0 2px 15px -3px hsl(220 25% 20% / 0.08);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +123,61 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    @apply text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Typing text styling */
+  .typing-text {
+    @apply font-mono text-xl leading-relaxed;
+  }
+  
+  .char-correct {
+    @apply text-green-600;
+    color: hsl(var(--correct));
+  }
+  
+  .char-incorrect {
+    @apply bg-red-100 text-red-600 rounded-sm;
+    background-color: hsl(var(--incorrect) / 0.2);
+    color: hsl(var(--incorrect));
+  }
+  
+  .char-current {
+    @apply bg-blue-500 text-white rounded-sm animate-pulse;
+    background-color: hsl(var(--current));
+  }
+  
+  .char-untyped {
+    color: hsl(var(--untyped));
+  }
+
+  /* Custom button variants */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+    @apply text-white font-semibold px-8 py-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-success {
+    background: var(--gradient-success);
+    @apply text-white font-semibold px-6 py-2 rounded-xl transition-all duration-300 hover:scale-105;
+  }
+
+  /* Stats cards */
+  .stats-card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-border/50 backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Smooth animations */
+  .fade-in {
+    @apply animate-in fade-in duration-500;
+  }
+
+  .scale-in {
+    @apply animate-in zoom-in duration-300;
   }
 }
