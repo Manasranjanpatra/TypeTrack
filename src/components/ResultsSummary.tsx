@@ -108,32 +108,8 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ stats, onRestart
         </div>
       </Card>
 
-      {/* Tips */}
-      <Card className="stats-card bg-gradient-to-r from-blue-50 to-purple-50">
-        <h3 className="text-lg font-semibold mb-4 text-center">💡 Tips for Improvement</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          {stats.accuracy < 90 && (
-            <div className="flex items-start space-x-2">
-              <span className="text-yellow-500">⚡</span>
-              <span>Focus on accuracy first, then speed will follow naturally.</span>
-            </div>
-          )}
-          {stats.wpm < 40 && (
-            <div className="flex items-start space-x-2">
-              <span className="text-blue-500">👆</span>
-              <span>Practice proper finger placement on the home row keys.</span>
-            </div>
-          )}
-          <div className="flex items-start space-x-2">
-            <span className="text-green-500">🎯</span>
-            <span>Take regular breaks to maintain focus and prevent fatigue.</span>
-          </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-500">📈</span>
-            <span>Consistent daily practice leads to significant improvement.</span>
-          </div>
-        </div>
-      </Card>
+      
+     
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">

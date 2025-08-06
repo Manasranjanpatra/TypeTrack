@@ -62,19 +62,19 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onComplete }) => {
     if (isActive && timeLeft > 0 && !isCompleted) {
       console.log('Starting timer interval');
       const timer = setInterval(() => {
-        console.log('Timer tick');
+      
         setTimeLeft(prevTime => {
           const newTime = prevTime - 1;
-          console.log('Time updated:', newTime);
+   
           return newTime;
         });
       }, 1000);
       return () => {
-        console.log('Clearing timer');
+
         clearInterval(timer);
       };
     } else if (timeLeft === 0 && !isCompleted) {
-      console.log('Timer completed, finishing test');
+     
       setIsCompleted(true);
       setIsActive(false);
       onComplete(calculateStats());
